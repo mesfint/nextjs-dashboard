@@ -40,6 +40,11 @@ export type LatestInvoice = {
 };
 
 // The database returns a number for amount, but we later format it to a string with the formatCurrency function
+// This type is used to represent the data as it comes from the database
+//and the Omit utility type is used to exclude the 'amount' property from the LatestInvoice type  
+//and then include it again with the correct type.
+//why do we need to do this?
+
 export type LatestInvoiceRaw = Omit<LatestInvoice, 'amount'> & {
   amount: number;
 };
